@@ -1,0 +1,156 @@
+/* ===========================================
+   Óptica Cristal — Panel + Lista (semáforo)
+   Unificado para toda la página
+   =========================================== */
+
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --primary:#1b64f2; --primary-600:#1857d3;
+  --text:#0f172a; --muted:#6b7280; --line:#e5e7eb; --chip:#f3f4f6;
+  --shadow:0 12px 30px rgba(0,0,0,.08); --radius:18px;
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+  background:var(--bg); color:var(--text); padding:24px;
+}
+
+/* ---- contenedor base ---- */
+.wrap{
+  width:min(1280px,95vw);
+  margin:0 auto 20px auto;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:clamp(16px,3vw,28px);
+}
+.muted{ color:var(--muted) }
+.divider{
+  width:min(1280px,95vw);
+  margin:24px auto;
+  height:0; border-top:1px dashed #d1d5db;
+}
+
+/* ===========================================
+   PANEL DE ACCESOS
+   =========================================== */
+#panel header.panel{
+  display:flex; align-items:center; gap:16px;
+  padding:6px 4px 18px; border-bottom:1px solid var(--line);
+}
+#panel header.panel img.logo{ height:40px; width:auto }
+#panel header.panel h1{
+  font-size:clamp(20px,3vw,28px); margin:0; font-weight:700; letter-spacing:.2px;
+}
+
+/* grillas reutilizables */
+.grid{ display:grid; gap:clamp(14px,2.2vw,20px); padding:clamp(14px,2.5vw,24px) 4px 8px }
+.grid-2{ grid-template-columns:repeat(2,1fr) }
+@media (max-width:820px){ .grid-2{ grid-template-columns:1fr } }
+
+/* botón tarjeta */
+.linkbtn{
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  min-height:clamp(140px,22vh,200px); padding:18px; border-radius:var(--radius);
+  background:#f8fafc; color:var(--text); text-decoration:none; font-weight:700;
+  font-size:clamp(18px,2.5vw,24px); border:2px solid var(--line);
+  box-shadow:0 6px 14px rgba(0,0,0,.05);
+  transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+  user-select:none;
+}
+.linkbtn:hover{ transform:translateY(-2px); box-shadow:0 12px 24px rgba(0,0,0,.08) }
+.linkbtn:active{ transform:translateY(0); box-shadow:0 6px 14px rgba(0,0,0,.06) }
+.linkbtn.primary{ background:#eef3ff; border-color:#d7e4ff; color:var(--primary) }
+.linkbtn.primary:hover{ border-color:#c6d7ff }
+
+.btn-content{ display:flex; flex-direction:column; align-items:center; gap:10px }
+.btn-content .icon-img{ width:56px; height:56px; object-fit:contain; display:block }
+.btn-content .label{ display:block; font-weight:800 }
+.bottom-actions{ padding-top:8px; padding-bottom:12px }
+
+/* ===========================================
+   LISTA + SEMÁFORO
+   (compatible con tu js/main.js)
+   =========================================== */
+#lista-trabajos header{
+  display:flex; gap:16px; flex-wrap:wrap; align-items:flex-start; padding:16px 0 0 0;
+}
+#lista-trabajos .card{
+  flex:1 1 520px; background:#fff; border:1px solid var(--line);
+  border-radius:12px; padding:12px 14px;
+}
+#lista-trabajos .toolbar{ display:flex; align-items:center; gap:10px }
+#lista-trabajos .toolbar .spacer{ flex:1 }
+#lista-trabajos .kpi{ color:var(--muted); font-size:14px }
+#lista-trabajos .pill{
+  background:var(--chip); border:1px solid var(--line);
+  padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted);
+}
+
+/* controles */
+#lista-trabajos input.grow{
+  flex:1; min-width:220px; padding:10px 12px; border:1px solid var(--line);
+  border-radius:10px; font-size:14px; outline:0;
+}
+#lista-trabajos select{
+  padding:10px 12px; border:1px solid var(--line);
+  border-radius:10px; font-size:14px;
+}
+#lista-trabajos button{
+  padding:10px 14px; border-radius:10px; border:1px solid var(--line);
+  background:#fff; cursor:pointer; font-weight:600;
+}
+#lista-trabajos button.primary{
+  background:var(--primary); color:#fff; border-color:var(--primary);
+}
+#lista-trabajos button.ghost{ background:#fff; color:#111827 }
+
+/* progreso */
+#lista-trabajos .progress{ display:none; align-items:center; gap:8px; padding:8px 2px; color:var(--muted) }
+#lista-trabajos .progress.show{ display:flex }
+#lista-trabajos .spinner{
+  width:16px; height:16px; border:2px solid #d1d5db; border-top-color:var(--primary);
+  border-radius:50%; animation:spin .9s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg) } }
+
+/* tabla */
+#lista-trabajos .tableWrap{ padding:8px 0 0 0; overflow:auto; border-top:1px solid var(--line) }
+#lista-trabajos table{
+  width:100%; border-collapse:separate; border-spacing:0; min-width:860px; font-size:14px;
+}
+#lista-trabajos thead th{
+  position:sticky; top:0; background:#fff; z-index:1;
+  text-align:left; font-weight:700; padding:10px 12px; border-bottom:1px solid var(--line);
+  white-space:nowrap;
+}
+#lista-trabajos tbody td{
+  padding:10px 12px; border-bottom:1px solid #f1f5f9; vertical-align:top;
+}
+#lista-trabajos tbody tr:hover{ background:#f9fafb }
+
+/* semáforo por fila (clases que pone tu JS) */
+#lista-trabajos tbody tr.verde    { background:#ecfdf5 }
+#lista-trabajos tbody tr.amarillo { background:#fffbeb }
+#lista-trabajos tbody tr.rojo     { background:#fef2f2 }
+#lista-trabajos tbody tr.celeste  { background:#eff6ff }
+#lista-trabajos tbody tr.gris     { background:#f3f4f6 }
+
+/* borde lateral fino para reforzar color */
+#lista-trabajos tbody tr.verde    td:first-child{ border-left:4px solid #16a34a }
+#lista-trabajos tbody tr.amarillo td:first-child{ border-left:4px solid #eab308 }
+#lista-trabajos tbody tr.rojo     td:first-child{ border-left:4px solid #ef4444 }
+#lista-trabajos tbody tr.celeste  td:first-child{ border-left:4px solid #3b82f6 }
+#lista-trabajos tbody tr.gris     td:first-child{ border-left:4px solid #94a3b8 }
+
+/* utilidades */
+#lista-trabajos .mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace }
+#lista-trabajos .empty{ padding:14px; color:var(--muted); text-align:center }
+#lista-trabajos .footer{ display:flex; justify-content:space-between; align-items:center; padding-top:10px; color:var(--muted); font-size:13px }
+
+/* responsive */
+@media (max-width:820px){
+  body{ padding:14px }
+  .wrap{ padding:16px }
+}
