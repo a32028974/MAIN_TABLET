@@ -5,81 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panel + Lista • Óptica Cristal</title>
   <link rel="icon" type="image/png" href="logo.png" />
-
-  <!-- ====== ESTILOS DEL PANEL (tus estilos) ====== -->
-  <style>
-    :root{
-      --bg:#f5f7fb; --card:#ffffff; --primary:#1b64f2; --primary-600:#1857d3;
-      --text:#1f2937; --muted:#6b7280; --shadow:0 12px 30px rgba(0,0,0,.08);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-      background:var(--bg); color:var(--text); min-height:100vh; padding:24px;
-    }
-    .wrap{width:min(1280px,95vw); margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:clamp(16px,3vw,28px)}
-    header.panel{display:flex; align-items:center; gap:16px; padding:6px 4px 18px; border-bottom:1px solid #e5e7eb}
-    header.panel img.logo{height:40px; width:auto}
-    header.panel h1{font-size:clamp(20px,3vw,28px); margin:0; font-weight:700; letter-spacing:.2px}
-    header.panel p{margin:2px 0 0; color:var(--muted); font-size:clamp(12px,1.7vw,14px)}
-
-    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(14px,2.2vw,20px); padding:clamp(14px,2.5vw,24px) 4px 8px}
-    .linkbtn{
-      display:flex; align-items:center; justify-content:center; text-align:center;
-      min-height:clamp(140px,22vh,200px); padding:18px; border-radius:var(--radius);
-      background:#f8fafc; color:var(--text); text-decoration:none; font-weight:700;
-      font-size:clamp(18px,2.5vw,24px); border:2px solid #e5e7eb;
-      box-shadow:0 6px 14px rgba(0,0,0,.05);
-      transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-      user-select:none;
-    }
-    .linkbtn:hover{transform:translateY(-2px); box-shadow:0 12px 24px rgba(0,0,0,.08)}
-    .linkbtn:active{transform:translateY(0); box-shadow:0 6px 14px rgba(0,0,0,.06)}
-    .linkbtn.primary{background:#eef3ff; border-color:#d7e4ff; color:var(--primary)}
-    .linkbtn.primary:hover{border-color:#c6d7ff}
-
-    /* Contenido interno: imagen arriba, texto abajo */
-    .btn-content{display:flex; flex-direction:column; align-items:center; gap:10px}
-    .btn-content .icon-img{width:56px; height:56px; object-fit:contain; display:block}
-    .btn-content .label{display:block}
-    .btn-content .sub{display:block; margin-top:2px; font-size:clamp(12px,1.6vw,14px); font-weight:600; color:var(--muted)}
-    footer.panel{text-align:right; padding:10px 6px 2px; color:var(--muted); font-size:12px}
-
-    /* Separador visual entre panel y lista */
-    .divider{
-      width:min(1280px,95vw); margin:24px auto; height:0; border-top:1px dashed #d1d5db;
-    }
-
-    @media (max-width:820px){
-      .grid{grid-template-columns:1fr}
-      .linkbtn{min-height:120px}
-    }
-  </style>
-
-  <!-- ====== ESTILOS DE LA TABLA (semáforo) ====== -->
-  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-
-  <!-- =========================
-       SECCIÓN 1: PANEL DE ACCESOS
-       ========================= -->
+  <!-- ====== PANEL SUPERIOR (4 botones) ====== -->
   <main class="wrap" id="panel">
     <header class="panel">
       <img class="logo" src="logo.png" alt="Óptica Cristal" />
       <div>
         <h1>Panel de accesos • Óptica Cristal</h1>
-        <p>Atajos rápidos para las herramientas</p>
+        <p class="muted">Atajos rápidos para las herramientas</p>
       </div>
     </header>
 
-    <section class="grid">
+    <section class="grid grid-2">
       <a class="linkbtn primary" href="https://a32028974.github.io/BUSCAR_ARTICULO/" target="_blank" rel="noopener">
         <span class="btn-content">
           <img class="icon-img" src="img/buscar.png" alt="Buscar" />
           <span class="label">Buscador de stock</span>
-          <span class="sub"></span>
         </span>
       </a>
 
@@ -87,7 +30,6 @@
         <span class="btn-content">
           <img class="icon-img" src="img/bajar.png" alt="Bajar del stock" />
           <span class="label">Bajar anteojos del stock</span>
-          <span class="sub"></span>
         </span>
       </a>
 
@@ -95,7 +37,6 @@
         <span class="btn-content">
           <img class="icon-img" src="img/recetas.png" alt="Toma de recetas" />
           <span class="label">Toma de recetas</span>
-          <span class="sub"></span>
         </span>
       </a>
 
@@ -103,36 +44,16 @@
         <span class="btn-content">
           <img class="icon-img" src="img/subir.png" alt="Subir al stock" />
           <span class="label">Subir anteojos al stock</span>
-          <span class="sub"></span>
-        </span>
-      </a>
-
-      <a class="linkbtn primary" href="https://a32028974.github.io/listo/" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <img class="icon-img" src="img/listo.png" alt="Marcar como listo" />
-          <span class="label">Marcar anteojos como LISTO</span>
-          <span class="sub"></span>
-        </span>
-      </a>
-
-      <a class="linkbtn primary" href="https://a32028974.github.io/PARA-LABORATORIO/" target="_blank" rel="noopener">
-        <span class="btn-content">
-          <img class="icon-img" src="img/taquilla.png" alt="Taquilla laboratorio" />
-          <span class="label">Taquilla laboratorio</span>
-          <span class="sub"></span>
         </span>
       </a>
     </section>
 
-    <footer class="panel">© Óptica Cristal · Accesos rápidos</footer>
+    <footer class="panel muted">© Óptica Cristal · Accesos rápidos</footer>
   </main>
 
   <div class="divider"></div>
 
-  <!-- =========================
-       SECCIÓN 2: LISTA + SEMÁFORO
-       (es tu misma estructura, sólo sin repetir <html> y <head>)
-       ========================= -->
+  <!-- ====== LISTA + SEMÁFORO ====== -->
   <div class="wrap" id="lista-trabajos">
     <header>
       <div class="card">
@@ -158,7 +79,7 @@
           <button id="btnClear" class="ghost">Limpiar</button>
         </div>
 
-        <div id="progress" class="progress" style="margin-top:6px">
+        <div id="progress" class="progress">
           <span class="spinner"></span>
           <span class="muted">Cargando…</span>
         </div>
@@ -179,9 +100,7 @@
           <span class="spacer"></span>
           <button id="exportCsv" class="ghost" title="Exportar CSV" disabled>⬇️ Exportar</button>
         </div>
-        <small class="muted">
-          Sin búsqueda: se ven los <b>últimos N</b> del Sheet. Con búsqueda: se muestran todas las coincidencias.
-        </small>
+        <small class="muted">Sin búsqueda: se ven los <b>últimos N</b> del Sheet. Con búsqueda: se muestran todas las coincidencias.</small>
       </div>
     </header>
 
@@ -209,7 +128,25 @@
     </div>
   </div>
 
-  <!-- JS de la tabla (semáforo) -->
+  <!-- ====== BOTONES INFERIORES (2 botones) ====== -->
+  <section class="wrap bottom-actions">
+    <div class="grid grid-2">
+      <a class="linkbtn primary" href="https://a32028974.github.io/listo/" target="_blank" rel="noopener">
+        <span class="btn-content">
+          <img class="icon-img" src="img/listo.png" alt="Marcar como listo" />
+          <span class="label">Marcar anteojos como LISTO</span>
+        </span>
+      </a>
+      <a class="linkbtn primary" href="https://a32028974.github.io/PARA-LABORATORIO/" target="_blank" rel="noopener">
+        <span class="btn-content">
+          <img class="icon-img" src="img/taquilla.png" alt="Taquilla laboratorio" />
+          <span class="label">Taquilla laboratorio</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Tu JS que ya funciona con action=tablero -->
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
