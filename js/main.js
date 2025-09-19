@@ -170,12 +170,27 @@ function render(){
   const btn = $('exportCsv'); if (btn) btn.disabled = filtered.length === 0;
 }
 
-// ---- FETCH preferente a "tablero" + recorte últimos N (cuando no hay búsqueda) ----
 async function fetchHistorial(limit, query){
-  const url = `${API_URL}?action=tablero`;
+  // anti-caché fuerte en cada request
+  const ts = Date.now();
+  const url = `${API_URL}?action=tablero&_ts=${ts}`;
+
   logUI('Cargando… (tablero)');
   const r = await fetch(url, { cache:'no-store' });
-  const json = await r.json();
+
+  // Si el server devolvió HTML (redir/404), lo detectamos y avisamos en pantalla
+  const text = await r.text();
+  if (!r.ok) {
+    throw new Error(`HTTP ${r.status}: ${text.slice(0,140)}…`);
+  }
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    // En móvil puede llegar una página HTML (consent/redirect). Lo mostramos.
+    throw new Error(`Respuesta no JSON: ${text.slice(0,140)}…`);
+  }
+
   const arr = Array.isArray(json) ? json : (Array.isArray(json.items) ? json.items : []);
   const total = arr.length;
 
