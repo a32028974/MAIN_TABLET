@@ -154,3 +154,22 @@ body{
   body{ padding:14px }
   .wrap{ padding:16px }
 }
+/* spacer para empujar el botón a la derecha */
+#panel header.panel .spacer{ flex:1 }
+
+/* botón del header arriba a la derecha */
+.hdr-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px; border-radius:999px; font-weight:700;
+  background:var(--primary); color:#fff; text-decoration:none;
+  border:1px solid var(--primary); box-shadow:0 4px 10px rgba(0,0,0,.07);
+  transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+}
+.hdr-btn:hover{ transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.1) }
+.hdr-btn:active{ transform:translateY(0); box-shadow:0 4px 10px rgba(0,0,0,.07) }
+
+/* en pantallas chicas que no se rompa */
+@media (max-width:640px){
+  .hdr-btn{ padding:8px 12px; font-size:14px }
+}
