@@ -131,11 +131,11 @@ body{
 #lista-trabajos tbody tr:hover{ background:#f9fafb }
 
 /* semáforo por fila (clases que pone tu JS) */
-#lista-trabajos tbody tr.verde    { background:#ecfdf5 }
-#lista-trabajos tbody tr.amarillo { background:#fffbeb }
-#lista-trabajos tbody tr.rojo     { background:#fef2f2 }
-#lista-trabajos tbody tr.celeste  { background:#eff6ff }
-#lista-trabajos tbody tr.gris     { background:#f3f4f6 }
+#lista-trabajos tbody tr.verde    { background:#65fd23 }
+#lista-trabajos tbody tr.amarillo { background:#f1ff23 }
+#lista-trabajos tbody tr.rojo     { background:#fd3030 }
+#lista-trabajos tbody tr.celeste  { background:#3ba0fc }
+#lista-trabajos tbody tr.gris     { background:#bcbcbc }
 
 /* borde lateral fino para reforzar color */
 #lista-trabajos tbody tr.verde    td:first-child{ border-left:4px solid #16a34a }
