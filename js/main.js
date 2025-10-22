@@ -315,7 +315,7 @@ $('q')        ?.addEventListener('keyup', (e)=>{ if(e.key==='Enter') cargar(); }
 
 // ===== Init =====
 window.addEventListener('DOMContentLoaded', ()=>{
-  state.page = Number($('limit')?.value || 100);
+  state.page = Number($('limit')?.value || 1000);
   logUI('Listo. Clic en Cargar o esperá la sincronización…');
   cargar();
   startAutoRefresh();
